@@ -1,9 +1,6 @@
 Rails.application.routes.draw do
 
-  root 'welcome#index' #homepage
 
-
-  resources :books
 
 
 
