@@ -108,3 +108,16 @@ $gray-medium-light: #eaeaea;
   margin-top: 45px;
   @include box_sizing;
 }
+
+/* forms */
+
+input, textarea, select, .uneditable-input {
+  border: 2px solid #777;
+  width: 100%;
+  margin-bottom: 25px;
+  @include box_sizing;
+}
+
+input {
+  height: auto !important;
+}

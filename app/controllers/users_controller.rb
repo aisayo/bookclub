@@ -8,6 +8,7 @@ class UsersController < ApplicationController
   def new #make new user/signup
     #should render sign up form
     #redirects to users show page
+    @user = User.new
   end
 
   def show #individual users profile page
