@@ -18,6 +18,12 @@ class SessionsController < ApplicationController
     log_out
   end
 
+private
+
+  def auth
+    request.env['omniauth.auth']
+  end
+
 end
 
 
