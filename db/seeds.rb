@@ -7,4 +7,4 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 
-books = Book.create([{title: "testing", author: "aysan"}])
+category = Category.create([{name: "Non-Fiction"}])
