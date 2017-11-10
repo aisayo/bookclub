@@ -11,11 +11,6 @@ class UsersController < ApplicationController
     @user = User.new
   end
 
-  def show #individual users profile page
-    @user = User.find_by(id: params[:id])
-  end
-
-
   def create
     @user = User.new(user_params)
     if @user.save
@@ -29,6 +24,11 @@ class UsersController < ApplicationController
     #creates a new user
     end
   end
+
+  def show #individual users profile page
+    @user = User.find_by(id: params[:id])
+  end
+
 
   private
 

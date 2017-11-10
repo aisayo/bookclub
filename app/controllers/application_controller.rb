@@ -3,6 +3,8 @@ class ApplicationController < ActionController::Base
   include SessionsHelper
 
   def homepage
-
   end
+
+
+
 end
