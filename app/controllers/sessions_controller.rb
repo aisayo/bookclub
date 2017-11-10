@@ -30,6 +30,8 @@ class SessionsController < ApplicationController
   #   end
   # end
 
+  #getting this error: URL blocked: This redirect failed because the redirect URI is not white-listed in the app's client OAuth settings. Make sure that the client and web OAuth logins are on and add all your app domains as valid OAuth redirect URIs.
+
   def destroy
     log_out
   end
