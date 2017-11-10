@@ -2,5 +2,5 @@
 
 
 <% @books.each do |book| %>
-Title: <%= book.title %> - By: <%= book.author %>
+Title: <%= link_to book.title, book_path(book) %> 
 <% end %>
