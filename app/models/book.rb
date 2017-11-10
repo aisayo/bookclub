@@ -1,3 +1,5 @@
 class Book < ApplicationRecord
-  validates :title, :author, presence: true #needs uniqueness
+
+  validates :title, :author, presence: true, uniqueness: true
+  
 end
