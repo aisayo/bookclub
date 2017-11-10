@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'sessions/new'
+
   root "application#homepage"
   resources :categories #nested route categories/1/books/1
     resources :books
