@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   get '/auth/facebook', to: 'sessions#create'
 
   resources :users
+  resources :books
 
 
   #resources :categories #nested route categories/1/books/1

@@ -10,7 +10,7 @@ class UsersController < ApplicationController
   end
 
   def create
-    @user = User.find_or_create_by(user_params)
+    @user = User.new(user_params)
     if @user.save
       log_in(@user)
       flash[:success] = "You're all signed up!"
