@@ -5,16 +5,14 @@ class UsersController < ApplicationController
     @users = User.all
   end
 
-  def new #make new user/signup
-    #should render sign up form
-    #redirects to users show page
+  def new
     @user = User.new
   end
 
   def create
-    @user = User.new(user_params)
+    @user = User.find_or_create_by(user_params)
     if @user.save
-      session[:user_id] = @user.id
+      log_in(@user)
       flash[:success] = "You're all signed up!"
       redirect_to @user
     else
