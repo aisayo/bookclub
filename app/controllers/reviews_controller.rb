@@ -1,12 +1,12 @@
 class ReviewsController < ApplicationController
-  def new #user creates new review
-    #needs to be logged in
-    #validations
-    #redirects to book show page with new review
+  include ReviewsHelper
+
+  def new
+    @review = Review.new
   end
 
   def create
-    #submits new review form
+    new_review
   end
 
   def edit
@@ -20,4 +20,11 @@ class ReviewsController < ApplicationController
   def delete
     #user can delete their own review
   end
+
+  private
+
+  def review_params
+    params.require(:review).permit(:title, :content)
+  end
+
 end

@@ -5,8 +5,7 @@ Rails.application.routes.draw do
   get '/login', to: 'sessions#new'
   post '/login', to: 'sessions#create'
   post '/logout', to: 'sessions#destroy'
-  get '/auth/facebook', to: 'sessions#create'
-
+  get '/auth/facebook/callback' => 'sessions#create'
   resources :users
   resources :books
   resources :categories

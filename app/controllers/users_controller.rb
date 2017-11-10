@@ -1,9 +1,5 @@
 class UsersController < ApplicationController
-
-  def index #lists all users
-    #only signed up/logged in users can see
-    @users = User.all
-  end
+  before_action :is_signed_in?
 
   def new
     @user = User.new
@@ -13,22 +9,18 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
     if @user.save
       log_in(@user)
-      flash[:success] = "You're all signed up!"
       redirect_to @user
+      flash[:success] = "You're all signed up!"
     else
-      render "new"
-    #submits forms
-    #validates params
-    #creates a new user
+      render :new
     end
   end
 
-  def show #individual users profile page
+  def show
     @user = User.find_by(id: params[:id])
   end
 
-
-  private
+private
 
     def user_params
       params.require(:user).permit(:username, :email, :password, :password_confirmation)
