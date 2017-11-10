@@ -1,3 +1,6 @@
 class Category < ApplicationRecord
-  validates :name, presense: true, uniqueness: true
+  has_many :books
+
+  validates :name, presence: true, uniqueness: true
+
 end
