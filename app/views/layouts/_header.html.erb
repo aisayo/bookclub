@@ -3,6 +3,10 @@
     <nav>
       <ul class="nav navbar-nav navbar-left">
         <li><%= link_to "Home", root_path %></li>
+        <% if current_user %>
+        <li><%= link_to "Log Out", logout_path, method: :delete %></li>
+        <li><%= link_to "Profile", current_user %></li>
+        <% end %>
       </ul>
     </nav>
   </div>
