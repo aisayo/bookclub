@@ -10,6 +10,7 @@ Rails.application.routes.draw do
   resources :users
   resources :books
   resources :categories
+  resources :reviews
 
 
   #resources :categories #nested route categories/1/books/1

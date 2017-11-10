@@ -1,4 +1,4 @@
-class ReviewController < ApplicationController
+class ReviewsController < ApplicationController
   def new #user creates new review
     #needs to be logged in
     #validations
