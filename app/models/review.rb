@@ -1,9 +1,10 @@
 class Review < ApplicationRecord
 
-  belongs_to :book
   belongs_to :user
+  belongs_to :book
 
   validates :title, :content, presence: true
-  validates :content, length: { maximum: 300 }
+  validates :content, length: { maximum: 250 }
+  validates :book_id, :user_id, presence: true
 
 end

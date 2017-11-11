@@ -7,6 +7,7 @@ class ReviewsController < ApplicationController
 
   def create
     new_review
+    params.inspect
   end
 
   def edit
@@ -24,7 +25,7 @@ class ReviewsController < ApplicationController
   private
 
   def review_params
-    params.require(:review).permit(:title, :content)
+    params.require(:review).permit(:title, :content, :rating, :user_id)
   end
 
 end

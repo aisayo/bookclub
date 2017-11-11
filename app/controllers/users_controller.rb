@@ -1,5 +1,4 @@
 class UsersController < ApplicationController
-  before_action :is_signed_in?
 
   def new
     @user = User.new

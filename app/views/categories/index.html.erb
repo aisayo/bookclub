@@ -1,7 +1,0 @@
-<h1>ALL CATEGORIES</h1>
-
-<% @categories.each do |c| %>
-<%= link_to c.name, category_path(c) %>
-<% end %>
-
-<br><%= link_to "Add New Category", new_category_path %>

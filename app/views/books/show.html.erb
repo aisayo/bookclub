@@ -1,8 +1,14 @@
 <h1><%= @book.title %></h1>
+
 <br>
 <br>
 
 
 will show reviews
+
+
 <br>
+
+<% if logged_in? %>
 <%= link_to "Add A Review", new_review_path %>
+<% end %>

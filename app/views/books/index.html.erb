@@ -2,8 +2,11 @@
 
 
 <% @books.each do |book| %>
-Title: <%= link_to book.title, book_path(book) %>
+<ul>
+  <li><h4><b><%= link_to book.title, book_path(book) %></h4>By:</b> <%= book.author %></li>
+</ul>
 <% end %>
 
-
+<% if logged_in? %>
 <br><%= link_to "Add New Book", new_book_path %>
+<% end %>
