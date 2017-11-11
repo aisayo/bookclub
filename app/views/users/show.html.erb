@@ -1,5 +1,16 @@
 <h1><%= @user.username %>'s Profile</h1>
-<h4><#%= #@user.review %></h4>
 
 #will have list of books user has added to their profile
 #order books by users rating
+
+<div class="col-md-8">
+    <% if @user.reviews.any? %>
+      <h3> Reviews: (<%= @user.reviews.count %>)</h3>
+    <% end %>
+
+    <% @reviews.each.with_index(1) do |r, i| %>
+    <%= "#{i}" %>. <%= r.title %> - <%= r.content %>
+    <% end %>
+
+  </div>
+</div>
