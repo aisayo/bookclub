@@ -3,8 +3,17 @@
 <br>
 <br>
 
+<h2><b> Reviews: </b></h2>
+
+  <% @book.reviews.each do |review| %>
+    <b>Title:</b> <%= review.title %><br>
+    <b>Review:</b> <%= review.content %><br>
+    <b>By:</b> <%= link_to review.user.username, user_path(review.user) %>
+  <% end %>
 
 
+<br>
+<br>
 <br>
 
 <% if logged_in? %>
