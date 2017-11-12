@@ -8,10 +8,13 @@ Rails.application.routes.draw do
   post '/login', to: 'sessions#create'
   post '/logout', to: 'sessions#destroy'
 
-  resources :users
-  resources :books
-  resources :reviews
+  resources :users, only: [:show]
 
+  resources :books do
+    resources :reviews
+  end
+
+  get '/auth/facebook/callback' => 'sessions#oauth'
 
   #resources :categories #nested route categories/1/books/1
     #resources :books

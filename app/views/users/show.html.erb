@@ -3,10 +3,12 @@
 <div class="col-md-8">
 
     <h3> Reviews: (<%= @user.reviews.count %>)</h3>
-
+    
     <% @reviews.each.with_index(1) do |r, i| %>
     <%= "#{i}" %>. <%= r.title %> - <%= r.content %>
+    <%= link_to "delete" %>
     <% end %>
+
 
   </div>
 </div>

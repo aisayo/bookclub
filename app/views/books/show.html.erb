@@ -10,5 +10,5 @@ will show reviews
 <br>
 
 <% if logged_in? %>
-<%= link_to "Add A Review", new_review_path %>
+<%= link_to "Add A Review", new_book_review_path(@book)  %>
 <% end %>
