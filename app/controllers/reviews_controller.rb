@@ -18,7 +18,9 @@ class ReviewsController < ApplicationController
   end
 
   def delete
-    #user can delete their own review
+    #find the users review
+      #could do a is_users_post? method
+    #user can delete their own review only 
   end
 
   private
