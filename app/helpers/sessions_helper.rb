@@ -4,14 +4,6 @@ module SessionsHelper
     session[:user_id] = user.id
   end
 
-  def current_user
-    @current_user ||= User.find_by(id: session[:user_id])
-  end
-
-  def logged_in?
-    !current_user.nil?
-  end
-
   def log_out
     session[:user_id] = nil
     redirect_to '/', notice: 'You are logged out!'
@@ -23,9 +15,8 @@ module SessionsHelper
   end
 
   def validate_login
-    raise params.inspect
-    user = User.find_by_username(session[:username])
-    if user && user.authenticate(session[:password_digest])
+    user = User.find_by(username: session[:username])
+    if user && user.authenticate(params[:session][:password])
       log_in(user)
       redirect_to user
     else

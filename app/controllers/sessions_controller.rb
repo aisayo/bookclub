@@ -4,7 +4,12 @@ class SessionsController < ApplicationController
   end
 
   def create
+    # current_user
+    # if !logged_in?
     validate_login
+    # else
+    # redirect_to user_path(current_user)
+    # end
   end
 
   def oauth
