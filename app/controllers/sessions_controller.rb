@@ -1,15 +1,15 @@
 class SessionsController < ApplicationController
 
   def new
+    if logged_in?
+      redirect_to user_path(current_user)
+    else
+      @user = User.new
+    end
   end
 
   def create
-    # current_user
-    # if !logged_in?
     validate_login
-    # else
-    # redirect_to user_path(current_user)
-    # end
   end
 
   def oauth
