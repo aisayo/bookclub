@@ -1,6 +1,9 @@
 class ReviewsController < ApplicationController
   include ReviewsHelper
 
+  def index
+  end
+
   def new
     @review = Review.new
   end
@@ -20,7 +23,7 @@ class ReviewsController < ApplicationController
   def delete
     #find the users review
       #could do a is_users_post? method
-    #user can delete their own review only 
+    #user can delete their own review only
   end
 
   private
