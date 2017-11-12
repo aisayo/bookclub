@@ -1,5 +1,6 @@
 <%= form_for(@user, url: signup_path) do |f| %>
-   <%= render 'shared/error_messages' %>
+
+  <%= render 'shared/error_messages', object: f.object %>
 
   <%= f.label :username %>
   <%= f.text_field :username, class: 'form-control' %>
@@ -14,4 +15,5 @@
   <%= f.password_field :password_confirmation, class: 'form-control' %>
 
   <%= f.submit "Create my account", class: "btn btn-primary" %>
+  
 <% end %>

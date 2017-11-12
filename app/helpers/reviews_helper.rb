@@ -1,9 +1,10 @@
 module ReviewsHelper
 
   def new_review
-    @review = current_user.reviews.create(review_params)
+    @review = current_user.reviews.build(review_params)
     if @review.save
-      redirect_to review_path(@review)
+      flash[:success] = "Thanks for the review!"
+      redirect_to root_path
     else
       render :new
     end

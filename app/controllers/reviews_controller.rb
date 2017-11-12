@@ -7,7 +7,6 @@ class ReviewsController < ApplicationController
 
   def create
     new_review
-    params.inspect
   end
 
   def edit
