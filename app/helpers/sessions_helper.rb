@@ -15,7 +15,7 @@ module SessionsHelper
   end
 
   def validate_login
-    user = User.find_by(username: session[:username])
+    user = User.find_by(username: params[:session][:username])
     if user && user.authenticate(params[:session][:password])
       log_in(user)
       redirect_to user
