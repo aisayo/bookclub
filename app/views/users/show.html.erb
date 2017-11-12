@@ -6,6 +6,7 @@
 
     <% @reviews.each.with_index(1) do |r, i| %>
     <%= "#{i}" %>. <%= r.title %> - <%= r.content %>
+    <%= link_to "edit" %>
     <%= link_to "delete", method: :delete %>
     <% end %>
 

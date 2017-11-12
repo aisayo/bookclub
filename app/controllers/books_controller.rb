@@ -13,7 +13,7 @@ class BooksController < ApplicationController
     if @book.save
     redirect_to books_path(@book)
     else
-      render :new
+    render :new
     end
   end
 
@@ -21,7 +21,7 @@ class BooksController < ApplicationController
     @book = Book.find_by(id: params[:id])
   end
 
-  private
+private
 
   def book_params
     params.require(:book).permit(:title, :author)

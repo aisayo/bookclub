@@ -4,14 +4,15 @@ class User < ApplicationRecord
   has_many :books
   has_many :reviews
 
-  validates :username, presence: true, length: { maximum: 10}, uniqueness: true, format: { without: /[0-9]/, message: "does not allow numbers" }
+  validates :username, presence: true, length: { maximum: 8}, uniqueness: true,
+  format: { without: /[0-9]/, message: "Does not allow numbers" }
 
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
-  validates :email, presence: true, length: { maximum: 30},
+  validates :email, presence: true, length: { maximum: 20},
   format: { with: VALID_EMAIL_REGEX }, uniqueness: { case_sensitive: false }
 
   has_secure_password
-  validates :password, presence: true, length: { minimum: 8 }
+  validates :password, presence: true, length: { minimum: 6 }
 
   def self.find_or_create_by_omniauth(auth_hash)
     where(email: auth_hash[:info][:email]).first_or_create do |user|

@@ -1,7 +1,8 @@
 class ReviewsController < ApplicationController
   include ReviewsHelper
 
-  def index
+  def index #do i even really need an index?
+    @review = Review.all
   end
 
   def new
