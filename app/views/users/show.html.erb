@@ -2,13 +2,15 @@
 
 <div class="col-md-8">
 
-    <h3> Reviews: (<%= @user.reviews.count %>)</h3>
+  <h3> Reviews: (<%= @user.reviews.count %>)</h3>
 
-    <% @reviews.each.with_index(1) do |r, i| %>
+  <% @user.reviews.each.with_index(1) do |r, i| %>
     <%= "#{i}" %>. <%= r.title %> - <%= r.content %>
-    <%= link_to "edit" %>
-    <%= link_to "delete", method: :delete %>
-    <% end %>
+      <% if current_user %>
+        <%= link_to "edit" %>
+        <%= link_to "delete", @review, method: :delete, data: { confirm: "You sure?" } %>
+      <% end %>
+  <% end %>
 
 
   </div>

@@ -1,8 +1,11 @@
 class Book < ApplicationRecord
 
-  has_many :reviews
+  has_many :reviews, dependent: :destroy
   has_many :users, through: :reviews
 
-  validates :title, :author, presence: true, uniqueness: true
+  accepts_nested_attributes_for :reviews
+
+  validates :title, :author, presence: true
+  validates :title, uniqueness: true
 
 end

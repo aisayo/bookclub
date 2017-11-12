@@ -1,7 +1,7 @@
 class User < ApplicationRecord
   before_save { self.email = email.downcase }
 
-  has_many :books
+  has_many :books, through: :reviews
   has_many :reviews
 
   validates :username, presence: true, length: { maximum: 8}, uniqueness: true,
