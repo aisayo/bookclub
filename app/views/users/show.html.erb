@@ -5,7 +5,8 @@
   <h3> Reviews: (<%= @user.reviews.count %>)</h3>
 
   <% @user.reviews.each.with_index(1) do |r, i| %>
-    <%= "#{i}" %>. <%= r.title %> - <%= r.content %>
+    <%= "#{i}" %>. <%= r.title %> - <%= r.content %><br>
+  --> Posted: <%= r.created_at %><br>
       <% if current_user %>
         <%= link_to "edit" %>
         <%= link_to "delete", @review, method: :delete, data: { confirm: "You sure?" } %>
