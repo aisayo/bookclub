@@ -11,28 +11,36 @@ class ReviewsController < ApplicationController
   end
 
   def create
-    new_review
+    @review = current_user.reviews.build(review_params)
+    @review.user = current_user
+    if @review.save
+      flash[:success] = "Thanks for the review!"
+      redirect_to book_path(@book)
+    else
+      render :new
+    end
   end
 
   def edit
+    @book = Book.find(params[:id])
     @review = Review.find_by(id: params[:id])
     #user can comment their own review
   end
 
   def update
-    @review = Review.update(review_params)
-    if @review
-      flash[:success] = "Review Updated"
-      redirect_to root_path
+    @book = Book.find(params[:id])
+    @review = Review.find(params[:id])
+    if @review.update(review_params)
+      flash[:success] = "Review Updated!"
+      redirect_to user_path(current_user)
     else
+      flash[:notice] = "Unsuccessful update!"
       render :edit
     end
-
-    #updates reviews if edited
   end
 
   def destroy
-    @review.destroy
+    current_user.reviews.find(params[:id]).destroy
     flash[:success] = "Review deleted"
     redirect_to root_path
     #find the users review

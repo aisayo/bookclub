@@ -1,5 +1,7 @@
-<h1>Edit Review</h1>
-<%= form_for [:book, @review]  do |book_review| %>
+<h1><%= @book.title %></h1>
+
+<h2>Edit Review</h2>
+<%= form_for [@book, @review]  do |book_review| %>
 
   <%= render 'shared/error_messages', object: book_review.object %>
 

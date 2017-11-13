@@ -1,5 +1,3 @@
-
-
 <h1>Add a new book</h1>
 
 <div class="row">
@@ -18,15 +16,19 @@
           <%= book_form.text_field :author, class: 'form-control' %>
 
             <%= book_form.fields_for :reviews do |rev_form| %>
-            <%= rev_form.label :review_title %>
+
+            <%= rev_form.label :title %>
             <%= rev_form.text_field :title %>
 
-            <%= rev_form.label :review_content %>
+            <%= rev_form.label :content %>
             <%= rev_form.text_area :content %>
+
+            <%= rev_form.label :rating %> (1-5)
+            <%= rev_form.number_field :rating %>
+
             <%= rev_form.hidden_field :user_id, value: current_user.id %>
 
             <% end %>
-
 
           <%= book_form.submit %>
 

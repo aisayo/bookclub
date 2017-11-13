@@ -5,7 +5,7 @@ class Review < ApplicationRecord
 
   default_scope -> { order(created_at: :desc) }
 
-  validates :title, :content, presence: true 
+  validates :title, :content, presence: true
   validates :content, length: { maximum: 250 }
 
 end
