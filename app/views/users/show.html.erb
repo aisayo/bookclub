@@ -7,12 +7,14 @@
       <% @user.reviews.each.with_index(1) do |r, i| %>
       <%= "#{i}" %>. <b>Book:</b> <%= link_to r.book.title, book_path(r.book) %><br>
         <ul>
-          <li><b>Review:</b> <%= r.title %> - <%= r.content %><br></li>
+          <li><b>Review:</b> <%= r.title %> - <%= r.content %> - <%= r.rating %><br></li>
             Posted: <%= r.created_at %><br>
         </ul>
         <% if current_user %>
-          <%= link_to "edit" %>
-          <%= link_to "delete", @user, method: :delete, data: { confirm: "You sure?" } %>
+          <%= link_to "edit", edit_user_review_path(current_user) %> -
+          <%= link_to "delete", method: :delete, data: { confirm: "You sure?" } %><br>
+          <br>
+          <br>
         <% end %>
       <% end %>
 

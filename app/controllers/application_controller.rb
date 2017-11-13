@@ -7,8 +7,6 @@ class ApplicationController < ActionController::Base
   def homepage
     if logged_in?
       redirect_to user_path(current_user)
-    else
-      redirect_to root_path
     end
   end
 

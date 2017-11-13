@@ -15,10 +15,19 @@ class ReviewsController < ApplicationController
   end
 
   def edit
+    @review = Review.find_by(id: params[:id])
     #user can comment their own review
   end
 
   def update
+    @review = Review.update(review_params)
+    if @review
+      flash[:success] = "Review Updated"
+      redirect_to root_path
+    else
+      render :edit
+    end
+
     #updates reviews if edited
   end
 
@@ -34,7 +43,7 @@ class ReviewsController < ApplicationController
   private
 
   def review_params
-    params.require(:review).permit(:title, :content, :rating, :user_id)
+    params.require(:review).permit(:title, :content, :rating, :user_id, :book_id)
   end
 
   def correct_user
