@@ -6,7 +6,8 @@ module SessionsHelper
       log_in(user)
       redirect_to user
     else
-      invalid_user
+      flash.now[:danger] = 'Invalid username/password combination'
+      render :new
     end
   end
 
@@ -14,15 +15,9 @@ module SessionsHelper
     session[:user_id] = user.id
   end
 
-  def invalid_user
-    flash.now[:danger] = 'Invalid username/password combination'
-    render :new
-  end
-
   def log_out
     session[:user_id] = nil
     redirect_to '/', notice: 'You are logged out!'
   end
-
-
+  
 end
