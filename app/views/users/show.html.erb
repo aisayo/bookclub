@@ -4,17 +4,17 @@
 
   <h3> Reviews: (<%= @user.reviews.count %>)</h3>
 
-      <% @user.reviews.each.with_index(1) do |r, i| %>
-      <%= "#{i}" %>. <b>Book:</b> <%= link_to r.book.title, book_path(r.book) %><br>
+      <% @user.reviews.each.with_index(1) do |review, i| %>
+      <%= "#{i}" %>. <b>Book:</b> <%= link_to review.book.title, book_path(review.book) %><br>
         <ul>
-          <li><b>Review:</b> <%= r.title %> - <%= r.content %> - <%= r.rating %><br></li>
-            Posted: <%= r.created_at %><br>
+          <li><b>Review:</b> <%= review.title %> - <%= review.content %> - <%= review.rating %><br></li>
+            Posted: <%= review.created_at %><br>
         </ul>
-        <% if current_user %>
-          <%= link_to "edit", edit_user_review_path(current_user) %> -
-          <%= link_to "delete", method: :delete, data: { confirm: "You sure?" } %><br>
-          <br>
-          <br>
+        <% if current_user == review.user %>
+        <%= link_to "edit", edit_user_review_path(current_user, review)  %> -
+        <%= link_to "delete", user_review_path(current_user, review), method: :delete, data: { confirm: "You sure?" } %><br>
+        <br>
+        <br>
         <% end %>
       <% end %>
 
