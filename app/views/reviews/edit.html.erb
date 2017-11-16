@@ -1,6 +1,7 @@
 <h1><%= @book.title %></h1>
 
 <h2>Edit Review</h2>
+
 <%= form_for [@book, @review]  do |book_review| %>
 
   <%= render 'shared/error_messages', object: book_review.object %>
@@ -11,7 +12,7 @@
       <%= book_review.label :content %>
       <%= book_review.text_area :content, class: 'form-control' %>
 
-      <%= book_review.label :rating %>
+      <%= book_review.label :rating %> (1-5)
       <%= book_review.number_field :rating, class: 'form-control' %>
 
       <%= book_review.submit "Submit", class: "btn btn-primary" %>

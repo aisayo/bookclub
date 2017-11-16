@@ -1,0 +1,7 @@
+<h1>Popular Books</h1>
+
+<center><% @popular_books.each do |book| %>
+<ul>
+  <b><%= link_to book.title, book_path(book) %> </b>
+</ul>
+<% end %>

@@ -6,21 +6,20 @@ class BooksController < ApplicationController
 
   def new
     @book = Book.new
-    @book.reviews.build(title: params[:title], content: params[:content])
+    @book.reviews.build(params[:reviews_attributes])
   end
 
   def create
-    @book = Book.create(book_params)
+    @book = Book.new(book_params)
     if @book.save
-    redirect_to books_path(@book)
+      redirect_to books_path(@book)
     else
-    render :new
+      render :new
     end
   end
 
   def show
-    @book = Book.find_by(params[:id])
-    book_review = @book.reviews
+    @book = Book.find(params[:id])
   end
 
 private
