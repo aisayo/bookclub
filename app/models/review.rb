@@ -8,8 +8,8 @@ class Review < ApplicationRecord
   scope :recent_reviews, -> { order(created_at: :desc) }
 
   def self.highest_rated_books
-    @highest_reviews = self.all.select do |review|
-      review.rating == 5
+    @highest_reviews = self.all.select do |r|
+      r.rating == 5
     end
     @highest_reviews.map do |review|
       review.book
