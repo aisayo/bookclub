@@ -9,9 +9,7 @@ Rails.application.routes.draw do
   get 'popular_books', to: 'reviews#popular_books'
 
   resources :users, only: [:show, :delete] do
-    #resources :books do
       resources :reviews
-    #end
   end
 
   resources :books do

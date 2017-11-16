@@ -4,8 +4,7 @@ class User < ApplicationRecord
   has_many :books, through: :reviews
   has_many :reviews
 
-  validates :username, presence: true, length: { maximum: 8}, uniqueness: true,
-  format: { without: /[0-9]/, message: "Does not allow numbers" }
+  validates :username, presence: true, length: { maximum: 15}, uniqueness: true
 
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
   validates :email, presence: true, length: { maximum: 20},
