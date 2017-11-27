@@ -15,7 +15,7 @@
           <%= book_form.label :author %>
           <%= book_form.text_field :author, class: 'form-control' %>
 
-            <%= book_form.fields_for :reviews do |rev_form| %>
+            <%= book_form.fields_for :reviews, @book.reviews.build do |rev_form| %>
 
             <%= rev_form.label :title %>
             <%= rev_form.text_field :title %>
