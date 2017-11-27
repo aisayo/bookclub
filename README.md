@@ -1,25 +1,22 @@
-# README
+Overview
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+This is a great app for everyone who loves to read and wants to share the books they have read along with their reviews. Users can sign up if they do not have an account, or sign in via Facebook. Once logged in, a user has access to an existing library of books or they can add a new book along with their review. Users can also look at the most popular books currently on the app, as well the most recent reviews.
 
-Things you may want to cover:
+This is a rails app
 
-* Ruby version
+To install this app, follow these steps:
 
-* System dependencies
+Fork and clone this repository.
+$ bundle install
+$ rails db:migrate
+$ rails db:seed
+$ rails server to open up the browser
+In your browser, enter http:localhost:3000.
 
-* Configuration
+Contributing
 
-* Database creation
+https://github.com/aisayo
 
-* Database initialization
+License
 
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
-# bookclub
+This application is available as open source under the terms of the MIT License.
