@@ -16,6 +16,7 @@ class Review < ApplicationRecord
     end.uniq
   end
 
+
   validates :title, :content, presence: true
   validates :content, length: { maximum: 250 }
   validates :rating, presence: true

@@ -7,11 +7,16 @@ class User < ApplicationRecord
   validates :username, presence: true, length: { maximum: 15}, uniqueness: true
 
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
+
   validates :email, presence: true, length: { maximum: 20},
   format: { with: VALID_EMAIL_REGEX }, uniqueness: { case_sensitive: false }
 
   has_secure_password
   validates :password, presence: true, length: { minimum: 6 }
+
+  def self.most_reviews
+    self.all.sort_by {|user| user.reviews.size * -1} [0]
+  end
 
   def self.find_or_create_by_omniauth(auth_hash)
     where(email: auth_hash[:info][:email]).first_or_create do |user|
