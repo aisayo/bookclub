@@ -1,0 +1,9 @@
+<% @book.reviews.each do |review| %>
+  <b>Title:</b> <%= review.title %><br>
+  <b>Review:</b> <%= review.content %><br>
+  <b>Rating:</b> <%= review.rating %><br>
+  <b>By:</b> <%= link_to review.user.username, user_path(review.user) %><br>
+  <b>Posted:</b> <%= review.created_at %><br>
+  <br>
+  <br>
+<% end %>
