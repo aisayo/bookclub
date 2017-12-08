@@ -1,4 +1,5 @@
 class ReviewSerializer < ActiveModel::Serializer
   attributes :id, :title, :content, :rating, :user_id, :book_id
-  belongs_to :book
+  belongs_to :book #do i need this?
+
 end

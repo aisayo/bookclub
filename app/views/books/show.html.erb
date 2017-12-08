@@ -11,11 +11,11 @@ By: <h3><%= @book.author.titleize %></h3><br>
 
 <h2><b>Reviews:</b></h2>
 
-<%= link_to "Reviews", book_reviews_path(@book) %>
+<%= link_to "Click for Reviews", book_reviews_path(@book), :class => "reviews_link" %>
 
 <br>
 
-  <% @book.reviews.each do |review| %>
+  <!-- <% @book.reviews.each do |review| %>
     <b>Title:</b> <%= review.title %><br>
     <b>Review:</b> <%= review.content %><br>
     <b>Rating:</b> <%= review.rating %><br>
@@ -23,7 +23,7 @@ By: <h3><%= @book.author.titleize %></h3><br>
     <b>Posted:</b> <%= review.created_at %><br>
     <br>
     <br>
-  <% end %>
+  <% end %> -->
 
 <br>
 <br>
