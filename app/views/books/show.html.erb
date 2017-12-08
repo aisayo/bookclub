@@ -1,6 +1,6 @@
 <center><h1><%= @book.title.titleize %></h1><br>
 By: <h3><%= @book.author.titleize %></h3><br>
-Summary: <h4><%= @book.summary %></h4><br></center>
+<p>Summary: <h5><%= @book.summary %></h5><br></p></center>
 
 
 
@@ -15,7 +15,7 @@ Summary: <h4><%= @book.summary %></h4><br></center>
 
 <br>
 
-  <!-- <% @book.reviews.each do |review| %>
+  <% @book.reviews.each do |review| %>
     <b>Title:</b> <%= review.title %><br>
     <b>Review:</b> <%= review.content %><br>
     <b>Rating:</b> <%= review.rating %><br>
@@ -23,7 +23,7 @@ Summary: <h4><%= @book.summary %></h4><br></center>
     <b>Posted:</b> <%= review.created_at %><br>
     <br>
     <br>
-  <% end %> -->
+  <% end %>
 
 <br>
 <br>
