@@ -1,20 +1,11 @@
 <center><h1><%= @book.title.titleize %></h1><br>
 By: <h3><%= @book.author.titleize %></h3><br>
 <p>Summary: <h5><%= @book.summary %></h5><br></p></center>
-
-
-
-
 <br>
 <br>
 <br>
-
-<h2><b>Reviews:</b></h2>
-
 <%= link_to "Click for Reviews", book_reviews_path(@book), :class => "reviews_link" %>
-
 <br>
-
   <!-- <% @book.reviews.each do |review| %>
     <b>Title:</b> <%= review.title %><br>
     <b>Review:</b> <%= review.content %><br>
@@ -24,11 +15,9 @@ By: <h3><%= @book.author.titleize %></h3><br>
     <br>
     <br>
   <% end %> -->
-
 <br>
 <br>
 <br>
-
 <% if logged_in? %>
 <%= link_to "Add A Review", new_book_review_path(@book), class: "btn btn-lg btn-primary" %>
 <% end %>
