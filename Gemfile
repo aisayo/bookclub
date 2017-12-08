@@ -32,6 +32,8 @@ gem 'bcrypt', '~> 3.1.7'
 # gem 'capistrano-rails', group: :development
 gem 'omniauth-facebook'
 gem "dotenv-rails"
+gem 'active_model_serializers'
+gem 'jquery-rails'
 
 
 group :development, :test do
