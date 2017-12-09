@@ -6,6 +6,9 @@ By: <h3><%= @book.author.titleize %></h3><br>
 <br>
 <%= link_to "Click for Reviews", book_reviews_path(@book), :class => "reviews_link" %>
 <br>
+<div class="reviews">
+
+</div>
   <!-- <% @book.reviews.each do |review| %>
     <b>Title:</b> <%= review.title %><br>
     <b>Review:</b> <%= review.content %><br>
