@@ -4,20 +4,13 @@ By: <h3><%= @book.author.titleize %></h3><br>
 <br>
 <br>
 <br>
-<%= link_to "Click for Reviews", book_reviews_path(@book), :class => "reviews_link" %>
+<h3>Reviews:</h3>
+
+<%= link_to "Load reviews", book_reviews_path(@book), :class => "reviews_link" %>
 <br>
 <div class="reviews">
-
+  <!-- this is where the reviews will be inserted via ajax/jquery -->
 </div>
-  <!-- <% @book.reviews.each do |review| %>
-    <b>Title:</b> <%= review.title %><br>
-    <b>Review:</b> <%= review.content %><br>
-    <b>Rating:</b> <%= review.rating %><br>
-    <b>By:</b> <%= link_to review.user.username, user_path(review.user) %><br>
-    <b>Posted:</b> <%= review.created_at %><br>
-    <br>
-    <br>
-  <% end %> -->
 <br>
 <br>
 <br>
