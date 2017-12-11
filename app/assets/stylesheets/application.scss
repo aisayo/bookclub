@@ -111,8 +111,8 @@ $gray-medium-light: #eaeaea;
 
 /* forms */
 
-input, textarea, select, .uneditable-input {
-  border: 2px solid #777;
+input, textarea, select, {
+  border: 1px solid #777;
   width: 100%;
   margin-bottom: 25px;
   @include box_sizing;
@@ -138,7 +138,7 @@ input {
 }
 
 orm {
-                width:500px;
+                width:200px;
                 margin:50px auto;
 }
 .search {

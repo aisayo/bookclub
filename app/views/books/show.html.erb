@@ -13,7 +13,27 @@ By: <h3><%= @book.author.titleize %></h3><br>
 </div>
 <br>
 <br>
-<br>
+<div class="review_form">
 <% if logged_in? %>
-<%= link_to "Add A Review", new_book_review_path(@book), class: "btn btn-lg btn-primary" %>
+  <%= form_for ([@book, @review])  do |book_review| %>
+
+    <%= render 'shared/error_messages', object: book_review.object %>
+
+        <%= book_review.label :title %>
+        <%= book_review.text_field :title, class: 'form-control' %>
+
+        <%= book_review.label :content %>
+        <%= book_review.text_area :content, class: 'form-control' %>
+
+        <%= book_review.label :rating %>
+        <%= book_review.number_field :rating, class: 'form-control' %>
+
+        <%= book_review.submit "Submit", class: "btn btn-primary" %>
+
+  <% end %>
 <% end %>
+</div>
+<br>
+<!-- # <% if logged_in? %>
+# <%= link_to "Add A Review", new_book_review_path(@book), class: "btn btn-lg btn-primary" %>
+# <% end %> -->
