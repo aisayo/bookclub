@@ -1,7 +1,7 @@
 // this sets the index at 0, but how do i get it to start at 1?
 var index = 0
 
-$(document).on('turbolinks:load', function () {
+$(document).ready(function () {
   loadReviews();
   leaveReview();
 })
@@ -26,10 +26,34 @@ function loadReviews(){
 })
 };
 
-function leaveReview(){
-  $("#new_review").on("submit", function(e){
-    alert("Clicked Submit")
-    e.preventDefault;
-  })
+// function leaveReview(){
+//   $("#new_review").on("submit", function(e){
+//     $.ajax({
+//       type: ($("input[name='method']").val() || this.method),
+//       url: this.action,
+//       data: this.serialize(),
+//       success: function(response){
+//         $("div.reviews").append(response)
+//       }
+//     })
+//     e.preventDefault();
+//   })
+// }
 
+function leaveReview(form){
+  $("#new_review").on("submit", function(e) {
+    var bookId = parseInt($("#review_book_id").attr("value"));
+    postUrl = "/books/" + bookId + "/reviews";
+      $.ajax({
+          url: postUrl,
+          data: $(form).serialize(),
+          type: "POST",
+          dataType: "json",
+          success: function(response) {
+              $("div.reviews").append(response)
+          },
+          error: function(xhr, textStatus, errorThrown) {}
+      });
+      e.preventDefault();
+  });
 }
