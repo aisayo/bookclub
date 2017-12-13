@@ -9,10 +9,12 @@ $(document).ready(function () {
 
 //creates an object
 class Review{
-  constructor(title, content, rating){ //do I need to construct user_id and ID for recipe?
-    this.title = title
+  constructor(id, title, content, rating, user_id, book_id){
     this.content = content
     this.rating = rating
+    this.user_id = user_id
+    this.book_id = book_id
+    this.id = id
   }
 }
 
@@ -25,7 +27,6 @@ function loadReviews(){
         $("div.reviews").append(
           "<ol>" +
           '<b>' + (index + 1) + "." + " " + "Review Title:" + "</b>" + " " + review.title + " " + "<br>" +
-          // how do i indent this and number each review((do i want to number each one?))?
           '<b>' + "Content:" + "</b>" + " " + review.content + " " + "<br>" +
           '<b>' + "Rating:" + "</b>" + " " + review.rating + " " +
           // how do i capture username for review???
@@ -48,11 +49,12 @@ function leaveReview(){
           type: "POST",
           dataType: "json",
           success: function(response) {
+            console.log(response)
             response = JSON.stringify(response)
-            debugger;
-            aysey = new Review(response.title, response.content, response.rating)
-            $("div.reviews").append(aysey)
-            $("form").trigger("reset")
+            review = new Review(response.title, response.content, response.rating)
+            $("div.reviews").append(review)
+            console.log(review)
+            $("form").trigger("reset") //clears form upon submission
           },
           error: function(xhr, textStatus, errorThrown) {}
       });
