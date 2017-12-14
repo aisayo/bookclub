@@ -24,9 +24,12 @@ class Review{
 //to be appended to DOM
 Review.prototype.reviewHtml = function () {
   let newHtml = " "
+  newHtml += `<li>`
   newHtml += `"<b>Review Title:</b>" ${this.title}`
   newHtml += `${this.content}`
   newHtml += `${this.rating}`
+  newHtml += `</li>`
+
   return newHtml
 };
 
@@ -66,7 +69,7 @@ function leaveReview(){
               // reviewResponse = {"id":159,"title":"dfa","content":"dfa","rating":3,"user_id":2,"book_id":6}
             let review = new Review(response.book_id, response.title, response.content, response.rating)
             console.log(review)
-            $("div.reviews").append(review.reviewHtml())
+            $("div.reviews ol").append(review.reviewHtml())
             $("form").trigger("reset") //clears form upon submission
           },
       });
