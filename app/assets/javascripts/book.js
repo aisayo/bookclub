@@ -1,16 +1,17 @@
-// this sets the index at 0, but how do i get it to start at 1?
+// this sets the index at 0
 let index = 0
 
-//waits for document to be loaded before doing anything
+//wait for document to be loaded before doing anything
 $(document).ready(function () {
   loadReviews();
   leaveReview();
 })
 
-//creates an object
+//create an object
 class Review{
   constructor(id, title, content, rating, user_id, book_id){
     this.content = content
+    this.title = title
     this.rating = rating
     this.user_id = user_id
     this.book_id = book_id
@@ -21,7 +22,7 @@ class Review{
 //loads reviews via jquery without a refresh
 function loadReviews(){
   $("a.reviews_link").on("click", function(e){
-    $("a.reviews_link").hide();
+    $("a.reviews_link").hide(); //hides load reviews link
     $.get(this.href).success(function(reviews){
       $.each(reviews, function(index, review){
         $("div.reviews").append(
@@ -38,8 +39,9 @@ function loadReviews(){
 })
 };
 
+//post a new review via ajax
 function leaveReview(){
-  $("#new_review").on("submit", function(e) {
+  $("form#new_review").on("submit", function(e) {
     const bookId = parseInt($("#review_book_id").attr("value"));
     postUrl =`/books/${bookId}/reviews`;
     e.preventDefault();
@@ -49,11 +51,11 @@ function leaveReview(){
           type: "POST",
           dataType: "json",
           success: function(response) {
-            console.log(response)
-            response = JSON.stringify(response)
-            review = new Review(response.title, response.content, response.rating)
-            $("div.reviews").append(review)
-            console.log(review)
+            reviewResponse = JSON.stringify(response)
+              // reviewResponse = {"id":159,"title":"dfa","content":"dfa","rating":3,"user_id":2,"book_id":6}
+            review = new Review(response.book_id, response.title, response.content, response.rating)
+            // console.log(review)
+            $("div.reviews").append(response)
             $("form").trigger("reset") //clears form upon submission
           },
           error: function(xhr, textStatus, errorThrown) {}
