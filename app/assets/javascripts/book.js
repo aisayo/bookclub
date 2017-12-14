@@ -19,6 +19,17 @@ class Review{
   }
 }
 
+//prototypes act like instance methods for a new object
+//this prototype will take the json object and return html
+//to be appended to DOM
+Review.prototype.reviewHtml = function () {
+  let newHtml = " "
+  newHtml += `"<b>Review Title:</b>" ${this.title}`
+  newHtml += `${this.content}`
+  newHtml += `${this.rating}`
+  return newHtml
+};
+
 //loads reviews via jquery without a refresh
 function loadReviews(){
   $("a.reviews_link").on("click", function(e){
@@ -51,14 +62,13 @@ function leaveReview(){
           type: "POST",
           dataType: "json",
           success: function(response) {
-            reviewResponse = JSON.stringify(response)
+            // let reviewResponse = JSON.stringify(response)
               // reviewResponse = {"id":159,"title":"dfa","content":"dfa","rating":3,"user_id":2,"book_id":6}
-            review = new Review(response.book_id, response.title, response.content, response.rating)
-            // console.log(review)
-            $("div.reviews").append(response)
+            let review = new Review(response.book_id, response.title, response.content, response.rating)
+            console.log(review)
+            $("div.reviews").append(review.reviewHtml())
             $("form").trigger("reset") //clears form upon submission
           },
-          error: function(xhr, textStatus, errorThrown) {}
       });
   });
 }
