@@ -1,6 +1,3 @@
-// this sets the index at 0
-let index = 0
-
 //wait for document to be loaded before doing anything
 $(document).ready(function () {
   loadReviews();
@@ -22,14 +19,13 @@ class Review{
 //prototypes act like instance methods for a new object
 //this prototype will take the json object and return html
 //to be appended to DOM
-Review.prototype.reviewHtml = function () {
+Review.prototype.reviewHtml = function(){
   let newHtml = " "
   newHtml += `<li>`
   newHtml += `<b>Review Title:</b> ${this.title} <br>`
   newHtml += `<b>Content:</b>${this.content}<br>`
   newHtml += `<b>Rating:</b>${this.rating}<br>`
   newHtml += `</li>`
-
   return newHtml
 };
 
@@ -75,3 +71,22 @@ function leaveReview(){
       });
   });
 }
+
+function nextPage(){
+  $("next").on("click", function (e){
+    e.preventDefault();
+    alert("you clicked it!")
+  })
+}
+   // var currentCatId = parseInt($(".js-next").attr("data-id"));
+   // $.getJSON("/cats", function(cats){
+   //   var currentIndex = cats.map(function(element) {
+   //     return element.id;
+   //   }).indexOf(currentCatId);
+   //   var nextCat = cats[currentIndex+1];
+   //   $(".cat-name").text(nextCat.name);
+   //   $(".cat-color").text(nextCat.color);
+   //   $(".trick-list").empty();
+   //   $.each(nextCat.tricks, function(index, trick) {
+   //     $(".trick-list").append(
+// }

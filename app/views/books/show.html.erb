@@ -22,13 +22,12 @@ By: <h3><%= @book.author.titleize %></h3><br>
 </div>
 <br>
 
-<center><a href="#" id="back" data-page="0">Back</a>
-<a href="#" id="next" data-page="2">Next</a></center>
+<center><a href="#" class="back" data-id="<%= @book.id %>">Back</a>
+<a href="#" class="next" data-id="<%= @book.id %>">Next</a></center>
 
 <!-- <center><a href="#" class="previous">&laquo; Previous</a>
 <a href="#" class="next">Next &raquo;</a></center> -->
 
-<div id="paginate"></div>
 <!-- # <% if logged_in? %>
 # <%= link_to "Add A Review", new_book_review_path(@book), class: "btn btn-lg btn-primary" %>
 # <% end %> -->
