@@ -53,10 +53,10 @@ function loadReviews(){
 function leaveReview(){
   $("form#new_review").on("submit", function(e) {
     const bookId = parseInt($("#review_book_id").attr("value"));
-    postUrl =`/books/${bookId}/reviews`;
+    let pageUrl =`/books/${bookId}/reviews`;
     e.preventDefault();
       $.ajax({
-          url: postUrl,
+          url: pageUrl,
           data: $(this).serialize(),
           type: "POST",
           dataType: "json",
@@ -73,7 +73,7 @@ function leaveReview(){
 }
 
 function nextPage(){
-  $("next").on("click", function (e){
+  $("a.next").on("click", function (e){
     e.preventDefault();
     alert("you clicked it!")
   })

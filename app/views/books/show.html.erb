@@ -22,11 +22,10 @@ By: <h3><%= @book.author.titleize %></h3><br>
 </div>
 <br>
 
-<center><a href="#" class="back" data-id="<%= @book.id %>">Back</a>
-<a href="#" class="next" data-id="<%= @book.id %>">Next</a></center>
-
-<!-- <center><a href="#" class="previous">&laquo; Previous</a>
-<a href="#" class="next">Next &raquo;</a></center> -->
+<center>
+  <a href="#" class="previous" data-id="<%= @book.id %>">&laquo; Previous</a>
+  <a href="#" class="next" data-id="<%= @book.id %>">Next &raquo;</a>
+</center>
 
 <!-- # <% if logged_in? %>
 # <%= link_to "Add A Review", new_book_review_path(@book), class: "btn btn-lg btn-primary" %>
