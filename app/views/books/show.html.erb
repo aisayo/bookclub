@@ -8,8 +8,8 @@ By: <h3><%= @book.author.titleize %></h3><br>
 
 <%= link_to "Load reviews", book_reviews_path(@book), :class => "reviews_link" %>
 <br>
-<div class="reviews">
-  <ol>
+<div>
+  <ol class="reviews">
     <!-- this is where the reviews will be inserted via ajax/jquery -->
   </ol>
 </div>
@@ -22,8 +22,13 @@ By: <h3><%= @book.author.titleize %></h3><br>
 </div>
 <br>
 
-<center><a href="#" class="previous">&laquo; Previous</a>
-<a href="#" class="next">Next &raquo;</a></center>
+<center><a href="#" id="back" data-page="0">Back</a>
+<a href="#" id="next" data-page="2">Next</a></center>
+
+<!-- <center><a href="#" class="previous">&laquo; Previous</a>
+<a href="#" class="next">Next &raquo;</a></center> -->
+
+<div id="paginate"></div>
 <!-- # <% if logged_in? %>
 # <%= link_to "Add A Review", new_book_review_path(@book), class: "btn btn-lg btn-primary" %>
 # <% end %> -->

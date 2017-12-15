@@ -25,9 +25,9 @@ class Review{
 Review.prototype.reviewHtml = function () {
   let newHtml = " "
   newHtml += `<li>`
-  newHtml += `"<b>Review Title:</b>" ${this.title}`
-  newHtml += `${this.content}`
-  newHtml += `${this.rating}`
+  newHtml += `<b>Review Title:</b> ${this.title} <br>`
+  newHtml += `<b>Content:</b>${this.content}<br>`
+  newHtml += `<b>Rating:</b>${this.rating}<br>`
   newHtml += `</li>`
 
   return newHtml
@@ -39,13 +39,13 @@ function loadReviews(){
     $("a.reviews_link").hide(); //hides load reviews link
     $.get(this.href).success(function(reviews){
       $.each(reviews, function(index, review){
-        $("div.reviews").append(
-          "<ol>" +
-          '<b>' + (index + 1) + "." + " " + "Review Title:" + "</b>" + " " + review.title + " " + "<br>" +
+        $("ol.reviews").append(
+          "<li>" +
+          '<b>' + " " + "Review Title:" + "</b>" + " " + review.title + " " + "<br>" +
           '<b>' + "Content:" + "</b>" + " " + review.content + " " + "<br>" +
           '<b>' + "Rating:" + "</b>" + " " + review.rating + " " +
           // how do i capture username for review???
-          "</ol>"
+          "</li>"
         )
       })
     })
@@ -69,7 +69,7 @@ function leaveReview(){
               // reviewResponse = {"id":159,"title":"dfa","content":"dfa","rating":3,"user_id":2,"book_id":6}
             let review = new Review(response.book_id, response.title, response.content, response.rating)
             console.log(review)
-            $("div.reviews ol").append(review.reviewHtml())
+            $("ol.reviews").append(review.reviewHtml())
             $("form").trigger("reset") //clears form upon submission
           },
       });
