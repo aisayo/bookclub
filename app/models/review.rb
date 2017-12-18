@@ -16,6 +16,15 @@ class Review < ApplicationRecord
     end.uniq
   end
 
+  def self.highest_level
+      @most_severe_vibes = self.all.select do |sv|
+        sv.level == 5
+      end
+      @most_severe_vibes.map do |vibe|
+        vibe.name
+      end.uniq
+    end
+
 
   validates :title, :content, presence: true
   validates :content, length: { maximum: 250 }

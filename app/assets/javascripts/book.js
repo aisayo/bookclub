@@ -1,18 +1,20 @@
-//wait for document to be loaded before doing anything
+//wait for document to be loaded before able to manipulate
 $(document).ready(function () {
   loadReviews();
   leaveReview();
+  nextBook();
+  // previousPage();
 })
 
 //create an object
 class Review{
   constructor(id, title, content, rating, user_id, book_id){
-    this.content = content
+    this.id = id
     this.title = title
+    this.content = content
     this.rating = rating
     this.user_id = user_id
     this.book_id = book_id
-    this.id = id
   }
 }
 
@@ -61,8 +63,6 @@ function leaveReview(){
           type: "POST",
           dataType: "json",
           success: function(response) {
-            // let reviewResponse = JSON.stringify(response)
-              // reviewResponse = {"id":159,"title":"dfa","content":"dfa","rating":3,"user_id":2,"book_id":6}
             let review = new Review(response.book_id, response.title, response.content, response.rating)
             console.log(review)
             $("ol.reviews").append(review.reviewHtml())
@@ -72,21 +72,30 @@ function leaveReview(){
   });
 }
 
-function nextPage(){
-  $("a.next").on("click", function (e){
-    e.preventDefault();
-    alert("you clicked it!")
-  })
-}
-   // var currentCatId = parseInt($(".js-next").attr("data-id"));
-   // $.getJSON("/cats", function(cats){
-   //   var currentIndex = cats.map(function(element) {
-   //     return element.id;
-   //   }).indexOf(currentCatId);
-   //   var nextCat = cats[currentIndex+1];
-   //   $(".cat-name").text(nextCat.name);
-   //   $(".cat-color").text(nextCat.color);
-   //   $(".trick-list").empty();
-   //   $.each(nextCat.tricks, function(index, trick) {
-   //     $(".trick-list").append(
+// function nextBook(){
+//   $(function () {
+//     $(".js-next").on("click", function() {
+//       var nextId = parseInt($(".js-next").attr("data-id")) + 1;
+//       $.get("/books/" + nextId, function(data) {
+//         $(".bookTitle").text(data["title"]);
+//         $(".bookAuthor").text(data["author"]);
+//         $(".bookSummary").text(data["summary"]);
+//         // re-set the id to current on the link
+//         $(".js-next").attr("data-id", data["id"]);
+//       });
+//     });
+//   });
 // }
+
+// function previousPage(){
+//   $("a.previous").on("click", function (){
+//     var bookId = parseInt($("a.next").attr("data-id"));
+//     console.log(bookId)
+//   })
+// }
+//
+
+//the DOM is what we currently see when we inspect a page.
+//This means that the html can be manipulated without a reload
+//this is important because it allows for our data to be appended via ajax or jquery
+//to the DOM on the backend without a reload.
