@@ -3,7 +3,7 @@ class Book < ApplicationRecord
   has_many :reviews
   has_many :users, through: :reviews
 
-  default_scope -> { order(title: :asc) }
+  default_scope -> { order(id: :asc) }
 
 
   def reviews_attributes=(reviews_attributes)

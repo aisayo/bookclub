@@ -5,7 +5,13 @@ By: <h3 class="bookAuthor"><%=@book.author.titleize%></h3><br>
 <br>
 <br>
 <br>
+<center>
+<%= link_to "Prev Book", book_path(@book.prev), :class => "previous_link", :"data-attribute" => @book.id %>
+<%= link_to "Next Book", book_path(@book.next), :class => "next_link", :"data-attribute" => @book.id  %>
+</center>
+
 <h3>Reviews:</h3>
+
 
 <%= link_to "Load reviews", book_reviews_path(@book), :class => "reviews_link" %>
 <br>
@@ -22,16 +28,6 @@ By: <h3 class="bookAuthor"><%=@book.author.titleize%></h3><br>
 <% end %>
 </div>
 <br>
-
-<!-- <center>
-<a href="#" class="js-previous" data-id="<%=@book.id%>">Previous</a> &#124;
-<a href="#" class="js-next" data-id="<%= @book.id %>">Next</a>
-</center> -->
-
-<center>
-<%= link_to "Prev", book_path(@book.prev), :class => "previous_link", :"data-attribute" => @book.id %>
-<%= link_to "Next", book_path(@book.next), :class => "next_link", :"data-attribute" => @book.id  %>
-</center>
 
 
 <!-- # <% if logged_in? %>
