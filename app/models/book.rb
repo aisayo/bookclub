@@ -19,7 +19,7 @@ class Book < ApplicationRecord
     books = book_ids_by_title
     book_index = books.find_index(id)
     next_book = book_index + 1
-    if next_book <= books.length
+    if next_book < books.length
       books[next_book]
     else
       id
@@ -30,7 +30,7 @@ class Book < ApplicationRecord
     books = book_ids_by_title
     book_index = books.find_index(id)
     prev_book = book_index - 1
-    if prev_book >= 0
+    if prev_book > 0
       books[prev_book]
     else
       id

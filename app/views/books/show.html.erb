@@ -29,8 +29,8 @@ By: <h3 class="bookAuthor"><%=@book.author.titleize%></h3><br>
 </center> -->
 
 <center>
-<%= link_to "Prev", book_path(@book.prev) %>
-<%= link_to "Next", book_path(@book.next)%>
+<%= link_to "Prev", book_path(@book.prev), :class => "previous_link", :"data-attribute" => @book.id %>
+<%= link_to "Next", book_path(@book.next), :class => "next_link", :"data-attribute" => @book.id  %>
 </center>
 
 

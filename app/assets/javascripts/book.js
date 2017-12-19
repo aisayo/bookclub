@@ -3,6 +3,7 @@ $(document).ready(function () {
   loadReviews();
   leaveReview();
   nextBook();
+  previousBook()
   // previousPage();
 })
 
@@ -72,28 +73,35 @@ function leaveReview(){
   });
 }
 
-// function nextBook(){
-//   $(function () {
-//     $(".js-next").on("click", function() {
-//       var nextId = parseInt($(".js-next").attr("data-id")) + 1;
-//       $.get("/books/" + nextId, function(data) {
-//         $(".bookTitle").text(data["title"]);
-//         $(".bookAuthor").text(data["author"]);
-//         $(".bookSummary").text(data["summary"]);
-//         // re-set the id to current on the link
-//         $(".js-next").attr("data-id", data["id"]);
-//       });
-//     });
-//   });
-// }
+function nextBook(){
+  $(".next_link").on("click", function(e){
+    e.preventDefault();
+    var nextId = parseInt($(".next_link").attr("data-attribute")) + 1;
+    $.get("/books/" + nextId + ".json", function(data) {
+      $(".bookTitle").text(data["title"]);
+      $(".bookAuthor").text(data["author"]);
+      $(".bookSummary").text(data["summary"]);
+      // re-set the id to current on the link
+      $(".next_link").attr("data-attribute", data["id"]);
+    });
+  });
+}
 
-// function previousPage(){
-//   $("a.previous").on("click", function (){
-//     var bookId = parseInt($("a.next").attr("data-id"));
-//     console.log(bookId)
-//   })
-// }
-//
+
+function previousBook(){
+  $(".previous_link").on("click", function(e){
+    e.preventDefault();
+    var previousId = parseInt($(".previous_link").attr("data-attribute")) - 1;
+    console.log(previousId)
+    $.get("/books/" + previousId + ".json", function(data) {
+      $(".bookTitle").text(data["title"]);
+      $(".bookAuthor").text(data["author"]);
+      $(".bookSummary").text(data["summary"]);
+      // re-set the id to current on the link
+      $(".previous_link").attr("data-attribute", data["id"]);
+    });
+  });
+}
 
 //the DOM is what we currently see when we inspect a page.
 //This means that the html can be manipulated without a reload
