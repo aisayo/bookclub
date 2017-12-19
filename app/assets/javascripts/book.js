@@ -4,8 +4,9 @@ $(document).ready(function () {
   leaveReview();
   nextBook();
   previousBook()
-  // previousPage();
 })
+
+var bookIds = [2, 3, 4, 5, 6]
 
 //create an object
 class Review{
@@ -76,13 +77,28 @@ function leaveReview(){
 function nextBook(){
   $(".next_link").on("click", function(e){
     e.preventDefault();
+    console.log('next clicked')
     var nextId = parseInt($(".next_link").attr("data-attribute")) + 1;
+    //if there are no more booksIds, then go back to the beginning of the array
     $.get("/books/" + nextId + ".json", function(data) {
       $(".bookTitle").text(data["title"]);
       $(".bookAuthor").text(data["author"]);
       $(".bookSummary").text(data["summary"]);
       // re-set the id to current on the link
       $(".next_link").attr("data-attribute", data["id"]);
+      //debugger
+      $(".previous_link").attr("data-attribute", data.id - 1);
+    }).fail(function(e) {
+      console.log('end of book list')
+      $.get("/books/1.json", function(data) {
+        $(".bookTitle").text(data["title"]);
+        $(".bookAuthor").text(data["author"]);
+        $(".bookSummary").text(data["summary"]);
+        // re-set the id to current on the link
+        $(".next_link").attr("data-attribute", data["id"]);
+        //debugger
+        $(".previous_link").attr("data-attribute", data.id - 1);
+      })
     });
   });
 }
@@ -91,6 +107,7 @@ function nextBook(){
 function previousBook(){
   $(".previous_link").on("click", function(e){
     e.preventDefault();
+    console.log('prev clicked')
     var previousId = parseInt($(".previous_link").attr("data-attribute")) - 1;
     console.log(previousId)
     $.get("/books/" + previousId + ".json", function(data) {
@@ -99,6 +116,17 @@ function previousBook(){
       $(".bookSummary").text(data["summary"]);
       // re-set the id to current on the link
       $(".previous_link").attr("data-attribute", data["id"]);
+      $(".next_link").attr("data-attribute", data["id"] + 1);
+    }).fail(function(e) {
+      $.get("/books/6.json", function(data) {
+        $(".bookTitle").text(data["title"]);
+        $(".bookAuthor").text(data["author"]);
+        $(".bookSummary").text(data["summary"]);
+        // re-set the id to current on the link
+        $(".next_link").attr("data-attribute", data["id"]);
+        //debugger
+        $(".previous_link").attr("data-attribute", data.id - 1);
+      })
     });
   });
 }
