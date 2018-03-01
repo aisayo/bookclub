@@ -9,7 +9,7 @@ end
 gem 'rails', '~> 5.1.4'
 gem 'bootstrap-sass', '3.3.7'
 # Use sqlite3 as the database for Active Record
-group :development, :test do
+group :development do
   gem 'sqlite3'
 end
 
